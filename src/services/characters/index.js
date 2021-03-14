@@ -27,6 +27,7 @@ export const getAllCharacters = async (options = {}) => {
   
     let url = `/characters`
   
+    
     if (comicId) {
       url = `/comics/${comicId}/characters`
     }

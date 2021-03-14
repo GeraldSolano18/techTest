@@ -20,6 +20,8 @@ $max-width: 1100px;
   color: set-text-color($color);
 }
 
+
+
 //To give margin & Padding
 $spaceamounts: (1,2,3,4,5);
 @each $space in $spaceamounts {
@@ -49,7 +51,7 @@ $spaceamounts: (1,2,3,4,5);
   
 }
 @mixin mediaMd {
-  @media screen and (max-width:800px) {
+  @media screen and (min-width:800px)  and (max-width:979px){
       @content;
   }
   
