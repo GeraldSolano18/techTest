@@ -1,0 +1,10 @@
+@keyframes example {
+  from {
+    filter: blur(5px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
