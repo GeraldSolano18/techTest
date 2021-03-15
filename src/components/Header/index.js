@@ -22,10 +22,10 @@ const Header = ({ siteTitle }) => (
           <Link to="/characters">Characters</Link>
         </li>
         <li>
-          <Link to="/cars">Stories</Link>
+          <Link to="/stories">Stories</Link>
         </li>
         <li>
-          <Link to="/cars">Your Favorites </Link>
+          <Link to="/favorites">Your Favorites </Link>
         </li>
       </ul>
     </nav>

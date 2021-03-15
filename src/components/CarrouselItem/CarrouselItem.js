@@ -25,6 +25,7 @@ const Carouselitem = (props) => {
         <div>
          
             <img
+            alt="imagen "
               className="carousel-item__details--img"
             //   src={playIcon}
             //   alt="Play Icon"

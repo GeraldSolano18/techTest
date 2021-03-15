@@ -207,3 +207,33 @@ a {
   }
  
 }
+
+
+
+
+.testOpacity {
+  height: 280px;
+  position: relative;
+}
+
+.like-button {
+  
+  position: absolute;
+  //para centrar
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+
+
+
+.testOpacity:hover .contentOpacity {
+  opacity: 1;
+
+}
+.testOpacitypq:hover .contentOpacity {
+  opacity: 1;
+}
