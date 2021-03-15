@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react"
 import Layout from "../../components/Layout"
 import SEO from "../../components/Seo"
+import ScrollComics from "../../components/ComicWindow"
 import Carousel from "../../components/Carrousel/Carrousel"
 import CarouselItem from "../../components/CarrouselItem/CarrouselItem"
 import DefaultImg from "../../components/DefaultImg/DefaultImg"
 import { getCharacter } from "../../services/characters"
 import { getThumbURL } from "../../utils"
+import ScrollStories from "../../components/StorieWindow"
 // import ComicScroll from "../../components/ComicScroll"
 // import StoriesScroll from "../../components/StoriesScroll"
 
 const CharacterPage = ({ params }) => {
   const [character, setCharacter] = useState({})
   const [comics, setComics] = useState({})
-  console.log(comics)
+  const characterId = params?.id || 0
 
   useEffect(() => {
     if (params?.id) {
@@ -109,6 +111,14 @@ const CharacterPage = ({ params }) => {
           </div>
         </div>
       </section>
+      <ScrollComics
+        height={400}
+        title="Character's comics"
+        characterId={characterId}
+      />
+
+      <ScrollStories characterId={characterId} height={400} />
+
       {comics.length > 0 && (
         <Carousel>
           {comics.map(item => (

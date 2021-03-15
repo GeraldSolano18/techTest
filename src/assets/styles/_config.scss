@@ -33,6 +33,16 @@ $spaceamounts: (1,2,3,4,5);
   .my-#{$space} {
     margin: #{$space}rem 0;
   }
+  .mt-#{$space} {
+    margin-top: #{$space}rem ;
+  }
+  .mb-#{$space} {
+    margin-bottom: #{$space}rem;
+  }
+
+
+
+
   //All around Padding
   .p-#{$space} {
     padding: #{$space}rem;

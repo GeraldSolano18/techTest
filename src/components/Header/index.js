@@ -1,17 +1,13 @@
-import * as React from "react"
-import PropTypes from "prop-types"
+import React from "react"
 import { Link } from "gatsby"
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <header>
     <nav className="navbar bg-light">
       <h1>
-        <Link to="/">
-          MARVEL
-        </Link>
+        <Link to="/">MARVEL</Link>
       </h1>
       <ul className="bold">
-       
         <li>
           <Link to="/featured">featured</Link>
         </li>
@@ -31,13 +27,5 @@ const Header = ({ siteTitle }) => (
     </nav>
   </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

@@ -1,17 +1,15 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect } from "react"
 import debounce from "lodash.debounce"
 import { getAllStories } from "../../services/stories"
 import { getAllComics } from "../../services/comics"
 import { BsSearch } from "react-icons/bs"
 import Select from "../Select"
-import CustomCard from "../Card/CharacterCard"
-import Circle from "../CircleList"
 
 const Searchbar = () => {
   const [searchType, setSearchType] = useState("comics")
   const [search, setSearch] = useState("")
   const [matches, setMatches] = useState([])
-  //cuando cambie searh o serh type
+
   useEffect(() => {
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -161,7 +159,7 @@ const Searchbar = () => {
           <div className="characters-circles">
             <div className="circles-item"></div>
 
-           <Circle obj={c.characters} />
+            {/* <Circle obj={c.characters} /> */}
           </div>
         </div>
       )
@@ -200,10 +198,7 @@ const Searchbar = () => {
             ]}
           />
         </div>
-        <div className="profiles">
-          {renderMatches()}
-          
-        </div>
+        <div className="profiles">{renderMatches()}</div>
       </form>
     </div>
   )

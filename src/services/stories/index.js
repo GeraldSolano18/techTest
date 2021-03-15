@@ -1,4 +1,4 @@
-import { requestData } from "../axios/axiosClient";
+import { requestData } from "../axios/axiosClient"
 
 export const getAllStories = async (options = {}) => {
   const { limit = 20, offset = 0, characterId = 0, comicId = 0 } = options
@@ -14,19 +14,15 @@ export const getAllStories = async (options = {}) => {
     url = `/characters/${characterId}/stories`
   }
 
-  //
-  
-
-
   if (comicId) {
-    url = `/comics/${comicId}/comics`
+    url = `/comics/${comicId}/stories`
   }
 
   try {
     const fetched = await requestData({
       method: "GET",
       url,
-      params
+      params,
     })
 
     return { data: fetched.data.data }
@@ -43,7 +39,7 @@ export const getStory = async id => {
   try {
     const fetched = await requestData({
       method: "GET",
-      url: `/stories/${id}`
+      url: `/stories/${id}`,
     })
 
     return { data: fetched.data.data }

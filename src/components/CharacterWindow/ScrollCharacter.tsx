@@ -1,27 +1,22 @@
 import React, { useEffect, useState } from "react"
-import { getAllCharacters } from "../services/characters"
+import { getAllCharacters } from "../../services/characters"
 import Scroll from "react-infinite-scroll-component"
-import CustomCard from "../components/Card/CharacterCard"
+import CustomCard from "../Card/CharacterCard"
 import { BsSearch } from "react-icons/bs"
 import debounce from "lodash.debounce"
-import Layout from "../components/Layout"
-import SEO from "../components/Seo"
-import Banner from "../components/Banner/banner"
-import "../assets/styles/components/Search/search.scss"
-import Searchbar from "../components/FilterCharacter"
 
-interface Props {
-  comicId: number
-  storyId: number
-  useSearch: false
+interface ScrollProps {
+  title: string
+  comicId?: number
+  storyId?: number
+  useSearch?: boolean
+  height:number
 }
 
-const Characters: React.FC<Props> = props => {
-  const [searchType, setSearchType] = useState("all")
+const ScrollCharacter: React.FC<ScrollProps> = props => {
   const [characterCards, setCharacterCards] = useState([])
   const [search, setSearch] = useState("")
   const [currentPage, setCurrentPage] = useState(0)
-  const [matches, setMatches] = useState([])
 
   //SEARCH ALL CHARACTERS
   useEffect(() => {
@@ -47,6 +42,8 @@ const Characters: React.FC<Props> = props => {
       name: search,
       limit: 20,
       offset: 20 * currentPage,
+      comicId: props.comicId,
+      storyId: props.storyId,
     }
 
     const { data } = await getAllCharacters(options)
@@ -82,6 +79,10 @@ const Characters: React.FC<Props> = props => {
   }
 
   const renderSearch = () => {
+    if (!props.useSearch) {
+      return <></>
+    }
+
     return (
       <div className="search-container">
         <div className="search-input">
@@ -97,36 +98,28 @@ const Characters: React.FC<Props> = props => {
       </div>
     )
   }
+
   return (
-    <Layout>
-      <SEO title="Characters" />
-      <Banner />
-      <section className="section_content">
-        <div className="filters-buttons">{renderSearch()}</div>
-        <h1 className="x-large primary-text ">All Marvel Characters</h1>
-        <div className="line"></div>
-        <Scroll
-          className="infinite-scroll my-4"
-          dataLength={characterCards.length}
-          next={loadCharacters}
-          height={800}
-          hasMore={true}
-          loader={
-            <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>
-          }
-        >
-          <div className="profiles"> {characterCards}</div>
-        </Scroll>
-        {showNoItemsMessage()}
-        <div>
-          <h1 className="x-large primary-text">FILTER CHARACTERS</h1>
-          <div className="line"></div>
-          <div className="py-1">
-            <Searchbar/>
-          </div>
-        </div>
-      </section>
-    </Layout>
+    <div className="filters-buttons">
+      <div className="filters-buttons">{renderSearch()}</div>
+      <h1 className="x-large primary-text "> {props.title}</h1>
+      <div className="line"></div>
+
+      <Scroll
+        className="infinite-scroll my-4"
+        dataLength={characterCards.length}
+        next={loadCharacters}
+        height={props.height}
+        hasMore={true}
+        loader={
+          <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>
+        }
+      >
+        <div className="profiles"> {characterCards}</div>
+      </Scroll>
+      {showNoItemsMessage()}
+    </div>
   )
 }
-export default Characters
+
+export default ScrollCharacter

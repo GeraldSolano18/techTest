@@ -4,7 +4,8 @@ import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
 import { getStore, getPersistor } from "./src/redux/store"
 
-// eslint-disable-next-line react/display-name, react/prop-types
+
+
 export default ({ element }) => {
   const store = getStore()
   const persistor = getPersistor(store)

@@ -1,14 +1,8 @@
-import { RouteComponentProps } from "@reach/router"
-import * as React from "react"
+import  React from "react"
 import { Link } from "gatsby"
-// import { PageProps, Link, graphql } from "gatsby"
-
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
-
-interface Props extends RouteComponentProps {}
-
-export const App: React.FC<Props> = () => (
+export const App = () => (
   <Layout>
     <SEO title="App" />
     <section className="landing">
