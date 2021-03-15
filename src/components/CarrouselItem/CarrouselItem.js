@@ -1,62 +1,43 @@
-/* eslint-disable react/jsx-no-bind */
-/* eslint-disable import/no-unresolved */
-import React from "react";
-// import { connect } from "react-redux";
-// import { setFavorite, deleteFavorite } from "../actions";
-// import playIcon from "../assets/static/play-icon.png";
-// import plusIcon from "../assets/static/plus-icon.png";
-// import remuveIcon from "../assets/static/remove-icon.png";
+import React from "react"
 
-const Carouselitem = (props) => {
-  const { name, reso} = props;
-//   const handleSetFavorite = () => {
-//     props.setFavorite({
-//       id, cover, title, year, contentRating, duration,
-//     });
-//   };
+const Carouselitem = props => {
+  const { name } = props
 
-  const handleDeleteFavorite = (itemId) => {
-    props.deleteFavorite(itemId);
-  };
   return (
     <div className="carousel-item">
-      <img className="carousel-item__img"  />
+      <img className="carousel-item__img" />
       <div className="carousel-item__details">
         <div>
-         
-            <img
+          <img
             alt="imagen "
-              className="carousel-item__details--img"
-            //   src={playIcon}
-            //   alt="Play Icon"
-            />
-         
+            className="carousel-item__details--img"
+        
+            alt="Play Icon"
+          />
 
           {/* {isList ? ( */}
-            <img
-              className="carousel-item__details--img"
-            //   src={remuveIcon}
-              alt="Remove Icon"
-            //   onClick={() => handleDeleteFavorite(id)}
-            />
-          {/* ) : ( */}
-            <img
-              className="carousel-item__details--img"
-            //   src={plusIcon}
-            //   alt="Plus Icon"
-            //   onClick={handleSetFavorite}
-            />
-          {/* )} */}
-
+          <img
+            className="carousel-item__details--img"
+        
+            alt="Remove Icon"
+        
+          />
+          
+          <img
+            className="carousel-item__details--img"
+           
+            alt="Plus Icon"
+          
+          />
         </div>
         <p className="carousel-item__details--title">{name}</p>
         <p className="carousel-item__details--subtitle">
-          {/* {`${year} ${contentRating} ${duration}`} */}
+        
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 // const mapDispatchToProps = {
 //   setFavorite, deleteFavorite,
 // };

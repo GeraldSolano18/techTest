@@ -8,7 +8,6 @@ import { useSelector } from "react-redux"
 
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
-import Banner from "../components/Banner/banner"
 
 interface Props extends RouteComponentProps {}
 
@@ -37,6 +36,7 @@ const Favorites: React.FC<Props> = () => {
         }
         return cardList.map(c => {
           return (
+          
             <CustomCard
               id={c.id}
               label={c.label}
@@ -44,6 +44,7 @@ const Favorites: React.FC<Props> = () => {
               link={c.link}
               itemType={c.itemType}
             />
+           
           )
         })
       }
@@ -51,13 +52,17 @@ const Favorites: React.FC<Props> = () => {
   return (
     <Layout>
       <SEO title="Favorites" />
-      <section className="section_content py-4">
+      <section className="section_content my-5">
         <h1 className="x-large">FAVORITE CHARACTERS</h1>
         <div className="line"></div>
+        <div className="profiles">
         {renderCards(favoriteCharacters)}
+        </div>
         <h1 className="x-large">FAVORITE COMICS</h1>
         <div className="line"></div>
+        <div className="profiles">
         {renderCards(favoriteComics)}
+        </div>
         <h1 className="x-large">FAVORITE STORIES</h1>
         <div className="line"></div>
         {renderCards(favoriteStories)}
