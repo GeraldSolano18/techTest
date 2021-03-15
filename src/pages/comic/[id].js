@@ -5,7 +5,7 @@ import { getComic } from "../../services/comics"
 import DefaultImg from "../../components/DefaultImg/DefaultImg"
 import { getThumbURL } from "../../utils"
 import CharacterScroll from "../../components/CharacterWindow/ScrollCharacter"
-import StoriesScroll from "../../components/StorieWindow"
+import ScrollStories from "../../components/StorieWindow"
 
 const Comics = ({ params }) => {
   const [comic, setComic] = useState({})
@@ -103,8 +103,12 @@ const Comics = ({ params }) => {
           </div>
         </div>
       </section>
-      <CharacterScroll title="comic book characters" comicId={comicId} />
-      <StoriesScroll comic={comicId} />
+      <CharacterScroll
+        height={400}
+        title="comic book characters"
+        comicId={comicId}
+      />
+      <ScrollStories height={400} comic={comicId} />
     </Layout>
   )
 }

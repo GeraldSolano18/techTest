@@ -4,13 +4,12 @@ import { getAllStories } from "../../services/stories"
 import { getAllComics } from "../../services/comics"
 import { BsSearch } from "react-icons/bs"
 import Select from "../Select"
-//import Circle from "../CircleList"
 
 const Searchbar = () => {
   const [searchType, setSearchType] = useState("comics")
   const [search, setSearch] = useState("")
   const [matches, setMatches] = useState([])
-  //cuando cambie searh o serh type
+
   useEffect(() => {
     fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps

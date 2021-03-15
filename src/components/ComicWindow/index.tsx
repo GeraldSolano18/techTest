@@ -1,25 +1,19 @@
-// If you don't want to use TypeScript you can delete this file!
-import { RouteComponentProps } from "@reach/router"
 import React, { useState, useEffect } from "react"
 import Scroll from "react-infinite-scroll-component"
-import { Link } from "gatsby"
-// import { PageProps, Link, graphql } from "gatsby"
-import { getAllComics } from "../services/comics"
-import { BsSearch } from "react-icons/bs"
-import CustomCard from "../components/Card/CharacterCard"
-import Layout from "../components/Layout"
-import SEO from "../components/Seo"
-import Banner from "../components/Banner/banner"
+import { getAllComics } from "../../services/comics"
 import debounce from "lodash.debounce"
-import Select from "../components/Select"
+import Select from "../Select"
+import { BsSearch } from "react-icons/bs"
+import CustomCard from "../Card/CharacterCard"
 
-interface Props extends RouteComponentProps {
-  characterId: number
-  storyId: number
-  useSearch: boolean
+interface ScrollComic {
+  characterId?: number
+  storyId?: number
+  title: string
+  useSearch?:boolean
+  height:number
 }
-
-const Comics: React.FC<Props> = props => {
+const ScrollComics: React.FC<ScrollComic> = props => {
   const [comicCards, setComicCards] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [search, setSearch] = useState("")
@@ -90,21 +84,23 @@ const Comics: React.FC<Props> = props => {
       )
     }
   }
-
   const renderSearch = () => {
+    if (!props.useSearch) {
+        return <></>
+      }
     return (
       <div className="search-container">
-      <div className="search-input">
-        <BsSearch className="icon" />
-        <input
-          type="text"
-          name="searchText"
-          onChange={updateSearch}
-          placeholder="Search..."
-          autoComplete="off"
-        />
-      </div>
-      <Select
+        <div className="search-input">
+          <BsSearch className="icon" />
+          <input
+            type="text"
+            name="searchText"
+            onChange={updateSearch}
+            placeholder="Search..."
+            autoComplete="off"
+          />
+        </div>
+        {/* <Select
           className="search-input input-dark"
           value={format}
           onBlur={updateFormat}
@@ -120,38 +116,32 @@ const Comics: React.FC<Props> = props => {
             { value: "digital comic", label: "Digital Comic" },
             { value: "infinite comic", label: "Infinite Comic" },
           ]}
-        />
-    </div>
+        /> */}
+      </div>
     )
   }
 
   return (
-    <Layout>
-      <SEO title="Comics" />
-      <Banner />
-      <section className="section_content">
-        <div className="filters-buttons">{renderSearch()}</div>
-        <h1 className="x-large">ALL Marvel Comics</h1>
-        <div className="line"></div>
+    <div className="filters-buttons">
+      {renderSearch()}
+      <h1 className="x-large primary-color">{props.title}</h1>
+      <div className="line"></div>
 
-        <Scroll
-          className="infinite-scroll my-4"
-          dataLength={comicCards.length}
-          next={loadComics}
-          height={800}
-          hasMore={true}
-          loader={
-            <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>
-          }
-        >
-        <div className="profiles">{ comicCards}</div>
-        
-        </Scroll>
-        {showNoItemsMessage()}
-
-
-      </section>
-    </Layout>
+      <Scroll
+        className="infinite-scroll my-4"
+        dataLength={comicCards.length}
+        next={loadComics}
+        height={props.height}
+        hasMore={true}
+        loader={
+          <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>
+        }
+      >
+        <div className="profiles">{comicCards}</div>
+      </Scroll>
+      {showNoItemsMessage()}
+    </div>
   )
 }
-export default Comics
+
+export default ScrollComics

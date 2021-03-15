@@ -4,7 +4,15 @@ import { Link } from "gatsby"
 import { BsHeart, BsHeartFill } from "react-icons/bs"
 import { getActionTypes } from "./utils"
 
-const CharacterCard = props => {
+interface CardProps {
+  id: number
+  image: string
+  link: string
+  label: string
+  itemType: "characters" | "comics" | "stories"
+}
+
+const CharacterCard: React.FC<CardProps> = props => {
   const dispatch = useDispatch()
 
   const isFavorite = useSelector(state => {
@@ -46,7 +54,11 @@ const CharacterCard = props => {
         onClick={favoriteClick}
         className="CustomCard-favorite"
       >
-        {!isFavorite ? <BsHeart className="like-button" /> : <BsHeartFill className="like-button" />}
+        {!isFavorite ? (
+          <BsHeart className="like-button" />
+        ) : (
+          <BsHeartFill className="like-button" />
+        )}
       </button>
     )
   }

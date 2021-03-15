@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { getAllCharacters } from "../../services/characters"
 import Scroll from "react-infinite-scroll-component"
-import CustomCard from "../../components/Card/CharacterCard"
+import CustomCard from "../Card/CharacterCard"
 import { BsSearch } from "react-icons/bs"
 import debounce from "lodash.debounce"
 
-const ScrollCharacter = props => {
+interface ScrollProps {
+  title: string
+  comicId?: number
+  storyId?: number
+  useSearch?: boolean
+  height:number
+}
+
+const ScrollCharacter: React.FC<ScrollProps> = props => {
   const [characterCards, setCharacterCards] = useState([])
   const [search, setSearch] = useState("")
   const [currentPage, setCurrentPage] = useState(0)
@@ -92,7 +100,7 @@ const ScrollCharacter = props => {
   }
 
   return (
-    <div>
+    <div className="filters-buttons">
       <div className="filters-buttons">{renderSearch()}</div>
       <h1 className="x-large primary-text "> {props.title}</h1>
       <div className="line"></div>
@@ -101,7 +109,7 @@ const ScrollCharacter = props => {
         className="infinite-scroll my-4"
         dataLength={characterCards.length}
         next={loadCharacters}
-        height={800}
+        height={props.height}
         hasMore={true}
         loader={
           <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>

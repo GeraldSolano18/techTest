@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react"
 import { getAllStories } from "../../services/stories"
-import CustomCard from "../../components/Card/CharacterCard"
+import CustomCard from "../Card/CharacterCard"
 import Scroll from "react-infinite-scroll-component"
-const ArrowStories = props => {
+
+interface ScrollStorie {
+  characterId?: number
+ // title: string
+  height:number
+  comicId?: number,
+  
+}
+
+
+  const ScrollStories: React.FC<ScrollStorie> = props => {
+
   const [storyCards, setStoryCards] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   useEffect(() => {
@@ -14,7 +25,7 @@ const ArrowStories = props => {
       limit: 20,
       offset: 20 * currentPage,
       characterId: props.characterId,
-      comicId: props.comic,
+      comicId: props.comicId,
     }
 
     const { data } = await getAllStories(options)
@@ -23,9 +34,10 @@ const ArrowStories = props => {
       const newCards = data.results.map(c => {
         return (
           <CustomCard
+            key={c.id}
             id={c.id}
             label={c.title}
-            // image={marvelPlaceholder}
+            image={''}
             link={`/story`}
             itemType="stories"
           />
@@ -46,12 +58,13 @@ const ArrowStories = props => {
     }
   }
   return (
-    <div>
+    <div className="filters-buttons">
+
       <Scroll
         className="infinite-scroll my-4"
         dataLength={storyCards.length}
         next={loadCards}
-        height={800}
+        height={props.height}
         hasMore={true}
         loader={
           <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>
@@ -64,4 +77,4 @@ const ArrowStories = props => {
   )
 }
 
-export default ArrowStories
+export default ScrollStories

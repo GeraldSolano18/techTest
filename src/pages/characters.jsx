@@ -6,22 +6,13 @@ import Banner from "../components/Banner/banner"
 import "../assets/styles/components/Search/search.scss"
 import Searchbar from "../components/FilterCharacter"
 
-interface Props {
-  comicId: number
-  storyId: number
-  useSearch: false
-}
-
-const Characters: React.FC<Props> = props => {
+const Characters = () => {
   return (
     <Layout>
       <SEO title="Characters" />
       <Banner />
       <section className="section_content">
-        <ScrollCharacter
-        title ="ALL MARVEL CHARACTERS"
-        useSearch
-        />
+        <ScrollCharacter height={800} title="ALL MARVEL CHARACTERS" useSearch />
         <div>
           <h1 className="x-large primary-text">FILTER CHARACTERS</h1>
           <div className="line"></div>

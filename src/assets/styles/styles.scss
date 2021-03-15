@@ -6,13 +6,11 @@
 @import "./components/Carrousel/carrousel.scss";
 @import "./components/CarrouselItem/CarrouselItem.scss";
 
-
 //pages
 @import "./pages/featured.scss";
 @import "pages/charactersDetail.scss";
 
 @import "mobile";
-
 
 * {
   box-sizing: border-box;
@@ -48,8 +46,7 @@ a {
     color: $primary-color;
   }
 }
-
-//Landing
+//home
 .landing {
   position: relative;
   background: url("../../images/banner.jpg") no-repeat center center/cover;
@@ -68,32 +65,31 @@ a {
   }
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: olivedrab;
+  color: white;
+  text-align: center;
+  z-index: 100;
+}
+
 .profiles {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   padding-bottom: 5rem;
-  // width: 1200px;
-  // margin: 20px auto;
-  // columns: 4;
-  // column-gap: 40px;
 }
 .card-character {
-  // width: 100%;
-  // margin: 0 0 20px;
-  // padding: 10px;
-
   overflow: hidden;
   break-inside: avoid;
   cursor: pointer;
   align-items: center;
-
   border: solid 1px transparent;
-  // line-height: 1.8;
   border-radius: 0 0 5px 5px;
-
   transition: 1.5s all;
-
   img {
     max-width: 100%;
     height: 250px;
@@ -111,34 +107,18 @@ a {
     }
   }
 }
-
 .filters-buttons {
   width: 90%;
   margin: auto;
-  // display: grid;
-  // grid-template-columns: 1fr 30%;
-  // gap: 2rem;
 }
 
 .section_content {
-
   padding: 0 3rem;
   color: white;
   h1 {
     text-align: center;
     padding-top: 2rem;
   }
-}
-
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: olivedrab;
-  color: white;
-  text-align: center;
-  z-index: 100;
 }
 
 .dropdown {
@@ -183,8 +163,8 @@ a {
   margin: 10px 0;
 }
 
-.dropdown li:hover{
- opacity: 0.5;
+.dropdown li:hover {
+  opacity: 0.5;
 }
 
 //components
@@ -206,11 +186,7 @@ a {
     margin-right: 8px;
     margin-left: 8px;
   }
- 
 }
-
-
-
 
 .testOpacity {
   height: 280px;
@@ -218,7 +194,6 @@ a {
 }
 
 .like-button {
-  
   position: absolute;
   //para centrar
   top: 0;
@@ -228,12 +203,8 @@ a {
   margin: auto;
 }
 
-
-
-
 .testOpacity:hover .contentOpacity {
   opacity: 1;
-
 }
 .testOpacitypq:hover .contentOpacity {
   opacity: 1;
