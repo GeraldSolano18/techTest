@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react"
 import Layout from "../../components/Layout"
 import SEO from "../../components/Seo"
-import Carousel from "../../components/Carrousel/Carrousel"
-import CarouselItem from "../../components/CarrouselItem/CarrouselItem"
+import ScrollComics from "../../components/ComicWindow"
+
 import DefaultImg from "../../components/DefaultImg/DefaultImg"
 import { getCharacter } from "../../services/characters"
 import { getThumbURL } from "../../utils"
-// import ComicScroll from "../../components/ComicScroll"
-// import StoriesScroll from "../../components/StoriesScroll"
+import ScrollStories from "../../components/StorieWindow"
 
 const CharacterPage = ({ params }) => {
   const [character, setCharacter] = useState({})
-  const [comics, setComics] = useState({})
-  console.log(comics)
+  const characterId = params?.id || 0
 
   useEffect(() => {
     if (params?.id) {
@@ -30,7 +28,6 @@ const CharacterPage = ({ params }) => {
 
     if (results && results[0]) {
       setCharacter(results[0])
-      setComics(results[0].comics.items)
     }
   }
 
@@ -82,24 +79,21 @@ const CharacterPage = ({ params }) => {
 
   return (
     <Layout>
-      <SEO title="Character info" />
-      {/* <h1 className="x-large">{character.name}</h1>
-        <div className="line"></div> */}
+      <SEO title="Character info" />      
       <section className="section_detail">
         <div className="box">
           <div className="card">
             <div className="imgBx">
               <div>{renderCharacterThumbnail()}</div>
             </div>
-            <div className="details">
-              <h2>{character.name}</h2>
-            </div>
+           
           </div>
         </div>
         <div className="">
           <div className="Character-info">
-            {/* <h1 className="x-large">{character.name}</h1> */}
-
+            <h1 className="x-large title-text">{character.name}</h1>
+           
+            <div className='line'></div>
             <p className="large">Descripcion</p>
             <p className="lead"> {renderDescription()}</p>
             <div className="line"></div>
@@ -109,13 +103,17 @@ const CharacterPage = ({ params }) => {
           </div>
         </div>
       </section>
-      {comics.length > 0 && (
-        <Carousel>
-          {comics.map(item => (
-            <CarouselItem key={item.id} {...item} isList />
-          ))}
-        </Carousel>
-      )}
+      <ScrollComics
+        height={400}
+        title="Character's comics"
+        characterId={characterId}
+      />
+
+      <ScrollStories
+        title="Character's stories"
+        characterId={characterId}
+        height={400}
+      />
     </Layout>
   )
 }
