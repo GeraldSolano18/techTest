@@ -1,4 +1,5 @@
 import React from "react"
+import { AiOutlineFileSearch } from "react-icons/ai"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import ScrollCharacter from "../components/CharacterWindow/ScrollCharacter"
@@ -13,7 +14,10 @@ const Characters = () => {
       <section className="section_content">
         <ScrollCharacter height={800} title="ALL MARVEL CHARACTERS" useSearch />
         <div>
-          <h1 className="x-large primary-text">FILTER CHARACTERS</h1>
+          <h1 className="x-large title-text">
+            <AiOutlineFileSearch className="mx-1" />
+            FILTER CHARACTERS
+          </h1>
           <div className="line"></div>
           <div className="py-1">
             <Searchbar />

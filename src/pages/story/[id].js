@@ -31,7 +31,7 @@ const StoriesPage = ({ params }) => {
 
   const renderDescription = () => {
     if (story.title) {
-      return <p className="Character-description">{story.title}</p>
+      return <p>{story.title}</p>
     }
 
     return (
@@ -39,6 +39,13 @@ const StoriesPage = ({ params }) => {
         There is no description available for this story
       </p>
     )
+  }
+  const renderTitle = () => {
+    if (story.title) {
+      return (
+        <p className="Character-description">{story.originalIssue.name}</p>
+      )
+    }
   }
 
   const renderCreators = () => {
@@ -71,17 +78,12 @@ const StoriesPage = ({ params }) => {
       <SEO title="story info" />
 
       <section className="section_detail">
-        <div className="box">
-          <div className="card">
-            <div className="imgBx">
-              <div>{renderStoryThumbnail()}</div>
-            </div>
-          </div>
+        <div className="imgBx">
+          <div>{renderStoryThumbnail()}</div>
         </div>
         <div className="">
           <div className="Character-info">
-            {/* <h1 className="x-large">{character.name}</h1> */}
-            <h2 className="large">{story.title}</h2>
+            <h1 className="x-large title-text">{renderTitle()}</h1>
             <div className="line"></div>
             <p className="large">Descripcion</p>
             <p className="lead"> {renderDescription()}</p>

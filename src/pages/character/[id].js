@@ -7,12 +7,9 @@ import DefaultImg from "../../components/DefaultImg/DefaultImg"
 import { getCharacter } from "../../services/characters"
 import { getThumbURL } from "../../utils"
 import ScrollStories from "../../components/StorieWindow"
-// import ComicScroll from "../../components/ComicScroll"
-// import StoriesScroll from "../../components/StoriesScroll"
 
 const CharacterPage = ({ params }) => {
   const [character, setCharacter] = useState({})
-  const [comics, setComics] = useState({})
   const characterId = params?.id || 0
 
   useEffect(() => {
@@ -31,7 +28,6 @@ const CharacterPage = ({ params }) => {
 
     if (results && results[0]) {
       setCharacter(results[0])
-      setComics(results[0].comics.items)
     }
   }
 
@@ -83,24 +79,21 @@ const CharacterPage = ({ params }) => {
 
   return (
     <Layout>
-      <SEO title="Character info" />
-      {/* <h1 className="x-large">{character.name}</h1>
-        <div className="line"></div> */}
+      <SEO title="Character info" />      
       <section className="section_detail">
         <div className="box">
           <div className="card">
             <div className="imgBx">
               <div>{renderCharacterThumbnail()}</div>
             </div>
-            <div className="details">
-              <h2>{character.name}</h2>
-            </div>
+           
           </div>
         </div>
         <div className="">
           <div className="Character-info">
-            {/* <h1 className="x-large">{character.name}</h1> */}
-
+            <h1 className="x-large title-text">{character.name}</h1>
+           
+            <div className='line'></div>
             <p className="large">Descripcion</p>
             <p className="lead"> {renderDescription()}</p>
             <div className="line"></div>
@@ -117,9 +110,10 @@ const CharacterPage = ({ params }) => {
       />
 
       <ScrollStories
-      title="Character's stories"
-      characterId={characterId} height={400} />
-
+        title="Character's stories"
+        characterId={characterId}
+        height={400}
+      />
     </Layout>
   )
 }

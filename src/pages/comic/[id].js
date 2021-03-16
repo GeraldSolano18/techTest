@@ -87,17 +87,13 @@ const Comics = ({ params }) => {
             <div className="imgBx">
               <div>{renderComicThumbnail()}</div>
             </div>
-            <div className="details">
-              <h2>{comic.title}</h2>
-            </div>
+           
           </div>
-        </div>
-
-
-        
+        </div>        
         <div className="">
           <div className="Character-info">
-            {/* <h1 className="x-large">{character.name}</h1> */}
+            <h1 className="x-large title-text">{comic.title}</h1>
+            <div className='line'></div>
 
             <p className="large">Descripcion</p>
             <p className="lead"> {renderDescription()}</p>

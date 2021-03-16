@@ -7,6 +7,30 @@
   }
 }
 
+//To give margin & Padding
+$spaceamounts: (1,2,3,4,5);
+@each $space in $spaceamounts {
+  //All around margin
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+  //Vetical MArgin
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+  .mt-#{$space} {
+    margin-top: #{$space}rem ;
+  }
+  .mb-#{$space} {
+    margin-bottom: #{$space}rem;
+  }
+  .mx-#{$space} {
+    margin: 0 #{$space}rem;
+  }
+
+
+}
+
 //SET BACKGROUND & TEXT COLOR
 @mixin set-background($color) {
   background-color: $color;
