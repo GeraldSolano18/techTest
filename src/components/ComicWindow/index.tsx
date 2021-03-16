@@ -124,7 +124,7 @@ const ScrollComics: React.FC<ScrollComic> = props => {
   return (
     <div className="filters-buttons">
       {renderSearch()}
-      <h1 className="x-large primary-color">{props.title}</h1>
+      <h1 className="x-large title-text">{props.title}</h1>
       <div className="line"></div>
 
       <Scroll
