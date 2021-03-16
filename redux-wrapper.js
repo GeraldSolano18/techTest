@@ -6,7 +6,7 @@ import { getStore, getPersistor } from "./src/redux/store"
 
 
 
-export default ({ element }) => {
+const reduxWrapper = ({ element }) => {
   const store = getStore()
   const persistor = getPersistor(store)
 
@@ -18,3 +18,5 @@ export default ({ element }) => {
     </Provider>
   )
 }
+
+export default reduxWrapper;

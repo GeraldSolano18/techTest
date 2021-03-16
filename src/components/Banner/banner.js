@@ -2,9 +2,9 @@ import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
 const Banner = props => (
-  <div className="master-container">
+  <div className="master-container ">
     <div>
-      <div className="seccion_banner">
+      <div className="seccion_banner ">
         <div className="seccion_master">
           <StaticImage
             className="img_Movie"

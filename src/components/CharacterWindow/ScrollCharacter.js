@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { getAllCharacters } from "../../services/characters"
 import Scroll from "react-infinite-scroll-component"
+import { MdError } from "react-icons/md"
 import CustomCard from "../Card/CharacterCard"
 import { BsSearch } from "react-icons/bs"
 import debounce from "lodash.debounce"
 
-interface ScrollProps {
-  title: string
-  comicId?: number
-  storyId?: number
-  useSearch?: boolean
-  height:number
-}
-
-const ScrollCharacter: React.FC<ScrollProps> = props => {
+const ScrollCharacter = props => {
   const [characterCards, setCharacterCards] = useState([])
   const [search, setSearch] = useState("")
   const [currentPage, setCurrentPage] = useState(0)
@@ -63,17 +56,19 @@ const ScrollCharacter: React.FC<ScrollProps> = props => {
 
       setCharacterCards([...characterCards, ...newCards])
       setCurrentPage(currentPage + 1)
-    } else {
-      return <h1>NO SE ENCONTRO NADA</h1>
-    }
+    } 
   }
 
   const showNoItemsMessage = () => {
     if (!characterCards || characterCards.length === 0) {
       return (
-        <span className="CharacterComics-title text-center">
-          There are no items available
-        </span>
+        <div className="my-5 d-flex">
+          <h1 className="large">
+            
+            <MdError className="mx-1" />
+            No results for your search{" "}
+          </h1>
+        </div>
       )
     }
   }
@@ -104,20 +99,19 @@ const ScrollCharacter: React.FC<ScrollProps> = props => {
       <div className="filters-buttons">{renderSearch()}</div>
       <h1 className="x-large title-text"> {props.title}</h1>
       <div className="line"></div>
-
-      <Scroll
-        className="infinite-scroll my-4"
-        dataLength={characterCards.length}
-        next={loadCharacters}
-        height={props.height}
-        hasMore={true}
-        loader={
-          <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>
-        }
-      >
-        <div className="profiles"> {characterCards}</div>
-      </Scroll>
-      {showNoItemsMessage()}
+      {!characterCards || characterCards.length === 0 ? (
+        <div>{showNoItemsMessage()}</div>
+      ) : (
+        <Scroll
+          className="infinite-scroll my-4"
+          dataLength={characterCards.length}
+          next={loadCharacters}
+          height={props.height}
+          hasMore={true}
+        >
+          <div className="profiles"> {characterCards}</div>
+        </Scroll>
+      )}
     </div>
   )
 }

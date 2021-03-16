@@ -1,0 +1,126 @@
+.profiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding-bottom: 5rem;
+}
+.title-text{
+    font-family: "Ranchers", cursive;
+    letter-spacing: 5px;
+}
+
+.card-character {
+  overflow: hidden;
+  break-inside: avoid;
+  cursor: pointer;
+  align-items: center;
+  border: solid 1px transparent;
+  border-radius: 0 0 5px 5px;
+  transition: 1.5s all;
+  img {
+    max-width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  .card-content {
+    padding: 0 1rem;
+  }
+  &:hover {
+    border: solid 1px $light-color;
+    border-top: none;
+    color: $primary-color;
+    img {
+      opacity: 0.7;
+    }
+  }
+}
+
+.seccion_banner {
+  background: $dark-color;
+  padding: 10px;
+  height: 500px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 180px 1fr;
+  column-gap: 8px;
+}
+.wrapper_banner {
+  padding: 0 40px;
+}
+
+.seccion_master {
+  height: 476px;
+  position: relative;
+}
+.seccion_master:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.seccion_masterpq {
+  height: 234px;
+  position: relative;
+}
+.seccion_masterpq:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.njss {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 4px;
+}
+
+.img_Movie {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: center;
+  border-radius: 5px;
+}
+
+.contentOpacity {
+  opacity: 0;
+  transition: 1s all;
+}
+.seccion_master:hover .contentOpacity {
+  opacity: 1;
+}
+.seccion_masterpq:hover .contentOpacity {
+  opacity: 1;
+}
+
+.title_opacity {
+  color: $light-color;
+}
+.title_master {
+  color: $light-color;
+}
+
+@include mediaXl {
+  .profiles {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@include mediaLg {
+  .profiles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include mediaMd {
+  .profiles {
+    grid-template-columns: 1fr 1fr;
+    // width: calc(100% - 40px);
+    // box-sizing: border-box;
+    // padding: 20px 20px 20px 0;
+  }
+}
+
+//SMARTFHONES
+@include mediaSm {
+  .profiles {
+    grid-template-columns: 1fr;
+  }
+}
+

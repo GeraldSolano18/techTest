@@ -3,15 +3,7 @@ import { getAllStories } from "../../services/stories"
 import CustomCard from "../Card/CharacterCard"
 import Scroll from "react-infinite-scroll-component"
 
-interface ScrollStorie {
-  characterId?: number
-  // title: string
-  height: number
-  title: string
-  comicId?: number
-}
-
-const ScrollStories: React.FC<ScrollStorie> = props => {
+const ScrollStories = props => {
   const [storyCards, setStoryCards] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   useEffect(() => {
@@ -65,9 +57,7 @@ const ScrollStories: React.FC<ScrollStorie> = props => {
         next={loadCards}
         height={props.height}
         hasMore={true}
-        loader={
-          <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>
-        }
+    
       >
         <div className="profiles"> {storyCards}</div>
       </Scroll>

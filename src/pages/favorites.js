@@ -1,5 +1,6 @@
 import * as React from "react"
 import CustomCard from "../components/Card/CharacterCard"
+import { AiFillStar } from "react-icons/ai"
 import { useSelector } from "react-redux"
 
 import Layout from "../components/Layout"
@@ -41,15 +42,25 @@ const Favorites = () => {
     <Layout>
       <SEO title="Favorites" />
       <section className="section_content my-5">
-        <h1 className="x-large">FAVORITE CHARACTERS</h1>
+        <h1 className="x-large title-text">
+          <AiFillStar /> FAVORITE CHARACTERS
+          <AiFillStar />
+        </h1>
         <div className="line"></div>
         <div className="profiles">{renderCards(favoriteCharacters)}</div>
-        <h1 className="x-large">FAVORITE COMICS</h1>
+        <h1 className="x-large title-text">
+          <AiFillStar /> FAVORITE COMICS
+          <AiFillStar />
+        </h1>
         <div className="line"></div>
         <div className="profiles">{renderCards(favoriteComics)}</div>
-        <h1 className="x-large">FAVORITE STORIES</h1>
+        <h1 className="x-large title-text">
+          <AiFillStar />
+          FAVORITE STORIES
+          <AiFillStar />
+        </h1>
         <div className="line"></div>
-        {renderCards(favoriteStories)}
+        <div className="profiles">{renderCards(favoriteStories)}</div>
       </section>
     </Layout>
   )

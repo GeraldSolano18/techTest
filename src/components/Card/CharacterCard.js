@@ -5,15 +5,7 @@ import { BsHeart, BsHeartFill } from "react-icons/bs"
 import { getActionTypes } from "./utils"
 import ImgDefault from "../DefaultImg/DefaultImg"
 
-interface CardProps {
-  id: number
-  image: string
-  link: string
-  label: string
-  itemType: "characters" | "comics" | "stories"
-}
-
-const CharacterCard: React.FC<CardProps> = props => {
+const CharacterCard  = props => {
   const dispatch = useDispatch()
 
   const isFavorite = useSelector(state => {
@@ -24,7 +16,6 @@ const CharacterCard: React.FC<CardProps> = props => {
       return false
     }
   })
-  console.log(props.itemType)
 
   const favoriteClick = () => {
     const actionTypes = getActionTypes(props.itemType)

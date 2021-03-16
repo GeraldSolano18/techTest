@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { MdError } from "react-icons/md"
 import Scroll from "react-infinite-scroll-component"
 import { getAllComics } from "../../services/comics"
 import debounce from "lodash.debounce"
@@ -6,14 +7,7 @@ import Select from "../Select"
 import { BsSearch } from "react-icons/bs"
 import CustomCard from "../Card/CharacterCard"
 
-interface ScrollComic {
-  characterId?: number
-  storyId?: number
-  title: string
-  useSearch?:boolean
-  height:number
-}
-const ScrollComics: React.FC<ScrollComic> = props => {
+const ScrollComics = props => {
   const [comicCards, setComicCards] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   const [search, setSearch] = useState("")
@@ -78,18 +72,21 @@ const ScrollComics: React.FC<ScrollComic> = props => {
   const showNoItemsMessage = () => {
     if (!comicCards || comicCards.length === 0) {
       return (
-        <span className="CharacterComics-title text-center">
-          There are no items available
-        </span>
+        <div className="my-5 d-flex">
+          <h1 className="large">
+            <MdError className="mx-1" />
+            No results for your search{" "}
+          </h1>
+        </div>
       )
     }
   }
   const renderSearch = () => {
     if (!props.useSearch) {
-        return <></>
-      }
+      return <></>
+    }
     return (
-      <div className="search-container">
+      <div className="HeaderSearchform">
         <div className="search-input">
           <BsSearch className="icon" />
           <input
@@ -100,8 +97,8 @@ const ScrollComics: React.FC<ScrollComic> = props => {
             autoComplete="off"
           />
         </div>
-        {/* <Select
-          className="search-input input-dark"
+        <Select
+          className="search-input"
           value={format}
           onBlur={updateFormat}
           name="select"
@@ -116,7 +113,7 @@ const ScrollComics: React.FC<ScrollComic> = props => {
             { value: "digital comic", label: "Digital Comic" },
             { value: "infinite comic", label: "Infinite Comic" },
           ]}
-        /> */}
+        />
       </div>
     )
   }
@@ -133,9 +130,6 @@ const ScrollComics: React.FC<ScrollComic> = props => {
         next={loadComics}
         height={props.height}
         hasMore={true}
-        loader={
-          <p style={{ textAlign: "center", marginTop: "1%" }}>Loading...</p>
-        }
       >
         <div className="profiles">{comicCards}</div>
       </Scroll>
