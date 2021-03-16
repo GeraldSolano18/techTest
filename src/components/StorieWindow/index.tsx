@@ -5,15 +5,13 @@ import Scroll from "react-infinite-scroll-component"
 
 interface ScrollStorie {
   characterId?: number
- // title: string
-  height:number
-  comicId?: number,
-  
+  // title: string
+  height: number
+  title: string
+  comicId?: number
 }
 
-
-  const ScrollStories: React.FC<ScrollStorie> = props => {
-
+const ScrollStories: React.FC<ScrollStorie> = props => {
   const [storyCards, setStoryCards] = useState([])
   const [currentPage, setCurrentPage] = useState(0)
   useEffect(() => {
@@ -36,8 +34,8 @@ interface ScrollStorie {
           <CustomCard
             key={c.id}
             id={c.id}
-            label={c.title}
-            image={''}
+            label={c.originalIssue.name}
+            image={""}
             link={`/story`}
             itemType="stories"
           />
@@ -59,7 +57,8 @@ interface ScrollStorie {
   }
   return (
     <div className="filters-buttons">
-
+      <h1 className="x-large title-text"> {props.title}</h1>
+      <div className="line"></div>
       <Scroll
         className="infinite-scroll my-4"
         dataLength={storyCards.length}

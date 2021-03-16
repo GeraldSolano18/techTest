@@ -102,7 +102,7 @@ const ScrollCharacter: React.FC<ScrollProps> = props => {
   return (
     <div className="filters-buttons">
       <div className="filters-buttons">{renderSearch()}</div>
-      <h1 className="x-large primary-text "> {props.title}</h1>
+      <h1 className="x-large title-text"> {props.title}</h1>
       <div className="line"></div>
 
       <Scroll

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react"
 import Layout from "../../components/Layout"
 import SEO from "../../components/Seo"
 import ScrollComics from "../../components/ComicWindow"
-import Carousel from "../../components/Carrousel/Carrousel"
-import CarouselItem from "../../components/CarrouselItem/CarrouselItem"
+
 import DefaultImg from "../../components/DefaultImg/DefaultImg"
 import { getCharacter } from "../../services/characters"
 import { getThumbURL } from "../../utils"
@@ -117,15 +116,10 @@ const CharacterPage = ({ params }) => {
         characterId={characterId}
       />
 
-      <ScrollStories characterId={characterId} height={400} />
+      <ScrollStories
+      title="Character's stories"
+      characterId={characterId} height={400} />
 
-      {comics.length > 0 && (
-        <Carousel>
-          {comics.map(item => (
-            <CarouselItem key={item.id} {...item} isList />
-          ))}
-        </Carousel>
-      )}
     </Layout>
   )
 }

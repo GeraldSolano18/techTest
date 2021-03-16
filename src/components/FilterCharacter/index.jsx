@@ -136,7 +136,7 @@ const Searchbar = () => {
   const renderMatches = () => {
     if (!matches || matches.length === 0 || !search) {
       return (
-        <div style={{ width: "100%" }} className="py-3">
+        <div >
           <h1 className="large">NO se ha encontrado resultados </h1>
         </div>
       )
@@ -168,38 +168,42 @@ const Searchbar = () => {
 
   return (
     <div className="HeaderSearchform">
-      <form>
-        <div>
-          <div className="search-container">
-            <div className="search-input">
-              <BsSearch className="icon" />
-              <input
-                type="text"
-                name="searchText"
-                onChange={handleSearchChange}
-                placeholder="Search..."
-                autoComplete="off"
-              />
-            </div>
-          </div>
-
-          <Select
-            className="search-input ml-3"
-            value={searchType}
-            onChange={searchTypeChange}
-            name="select"
-            options={[
-              { className: "text-dark", value: "comics", label: "Comics" },
-              {
-                className: "text-dark",
-                value: "stories",
-                label: "Stories",
-              },
-            ]}
+      <div className="search-container">
+        <div className="search-input">
+          <BsSearch className="icon" />
+          <input
+            type="text"
+            name="searchText"
+            onChange={handleSearchChange}
+            placeholder="Search..."
+            autoComplete="off"
           />
         </div>
-        <div className="profiles">{renderMatches()}</div>
-      </form>
+      </div>
+
+      <Select
+        className="dropdown ml-3"
+        value={searchType}
+        onChange={searchTypeChange}
+        name="select"
+        options={[
+          { className: "text-dark", value: "comics", label: "Comics" },
+          {
+            className: "text-dark",
+            value: "stories",
+            label: "Stories",
+          },
+        ]}
+      />
+
+        {renderMatches()}
+      <div className="profiles">
+        
+        
+        
+        
+        
+  </div>
     </div>
   )
 }

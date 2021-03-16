@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Link } from "gatsby"
 import { BsHeart, BsHeartFill } from "react-icons/bs"
 import { getActionTypes } from "./utils"
+import ImgDefault from "../DefaultImg/DefaultImg"
 
 interface CardProps {
   id: number
@@ -67,7 +68,7 @@ const CharacterCard: React.FC<CardProps> = props => {
     <>
       <div className="card-character bg-ligth">
         <div className="testOpacity">
-          <img alt="img" src={props.image} />
+          {props.image ? <img alt="img" src={props.image} /> : <ImgDefault />}
 
           <div className="contentOpacity">{renderFavoriteButton()}</div>
         </div>

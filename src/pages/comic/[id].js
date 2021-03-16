@@ -52,11 +52,13 @@ const Comics = ({ params }) => {
 
     return comic.creators.items.map(c => {
       return (
-        <p className="Character-description">
-          <span>{c.name}</span>
-          <br />
-          <span>{c.role}</span>
-        </p>
+       
+          <div className="lead">
+            <span>{c.name}</span>
+            <br />
+            <span>{c.role}</span>
+          </div>
+       
       )
     })
   }
@@ -90,6 +92,9 @@ const Comics = ({ params }) => {
             </div>
           </div>
         </div>
+
+
+        
         <div className="">
           <div className="Character-info">
             {/* <h1 className="x-large">{character.name}</h1> */}
@@ -98,17 +103,18 @@ const Comics = ({ params }) => {
             <p className="lead"> {renderDescription()}</p>
             <div className="line"></div>
             <p className="large">Creator</p>
-            <div className="Character-info">{renderCreators()}</div>
+            <div  className="renderCreator">{renderCreators()}</div>
             <div className="line"></div>
           </div>
         </div>
       </section>
       <CharacterScroll
-        height={400}
-        title="comic book characters"
+        height={600}
+        title="Comic book characters"
         comicId={comicId}
       />
-      <ScrollStories height={400} comic={comicId} />
+      <ScrollStories title="Comic's stories
+" height={600} comic={comicId} />
     </Layout>
   )
 }
