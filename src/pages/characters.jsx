@@ -3,7 +3,6 @@ import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import ScrollCharacter from "../components/CharacterWindow/ScrollCharacter"
 import Banner from "../components/Banner/banner"
-import "../assets/styles/components/Search/search.scss"
 import Searchbar from "../components/FilterCharacter"
 
 const Characters = () => {

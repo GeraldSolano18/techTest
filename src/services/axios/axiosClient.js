@@ -1,13 +1,14 @@
+
 import axios from "axios";
 
 export const requestData = ({method, url, params}) => {
     // console.log('key', process.env.GATSBY_PUBLIC_KEY)
     let paramsInit = {
-        apikey: "d497257b9e1bfc1f8b42246f2a61fb78",
+        apikey: process.env.GATSBY_PUBLIC_KEY,
     }
     return axios({
         method: method || "GET",
-        baseURL: `https://gateway.marvel.com/v1/public`,
+        baseURL: `${process.env.GATSBY_API_URL}`,
         url: url || "",
         params: {
             ...paramsInit,

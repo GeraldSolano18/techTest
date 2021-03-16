@@ -9,9 +9,6 @@ const Header = () => (
       </h1>
       <ul className="bold">
         <li>
-          <Link to="/featured">featured</Link>
-        </li>
-        <li>
           <Link to="/comics"> Comics</Link>
         </li>
         <li>

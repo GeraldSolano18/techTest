@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
         >
           ©copyright
           {` `}
-          <a href="https://github.com/GeraldSolano18">Gerald Solano</a>
+          <a href="https://github.com/GeraldSolano18">@GeraldSolano18</a>
         </footer>
       </div>
     </>
