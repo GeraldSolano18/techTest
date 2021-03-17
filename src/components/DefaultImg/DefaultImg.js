@@ -6,6 +6,7 @@ const Image = () => {
     <StaticImage
       src="../../images/marvel-placeholder.jpg"
       alt="A default img"
+      style={{height:"100%"}}
     />
   )
 }

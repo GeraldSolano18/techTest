@@ -57,7 +57,6 @@ const ScrollStories = props => {
         next={loadCards}
         height={props.height}
         hasMore={true}
-    
       >
         <div className="profiles"> {storyCards}</div>
       </Scroll>

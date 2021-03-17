@@ -59,7 +59,7 @@ const CharacterCard  = props => {
     <>
       <div className="card-character bg-ligth">
         <div className="testOpacity">
-          {props.image ? <img alt="img" src={props.image} /> : <ImgDefault />}
+          {props.image ? <img alt="img" src={props.image} /> : <ImgDefault  />}
 
           <div className="contentOpacity">{renderFavoriteButton()}</div>
         </div>
