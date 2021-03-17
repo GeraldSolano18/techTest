@@ -6,6 +6,7 @@ import debounce from "lodash.debounce"
 import Select from "../Select"
 import { BsSearch } from "react-icons/bs"
 import CustomCard from "../Card/CharacterCard"
+import { AiOutlineFileSearch } from "react-icons/ai"
 
 const ScrollComics = props => {
   const [comicCards, setComicCards] = useState([])
@@ -119,21 +120,25 @@ const ScrollComics = props => {
   }
 
   return (
-    <div className="filters-buttons">
-      {renderSearch()}
-      <h1 className="x-large title-text">{props.title}</h1>
+    <div className="window-width">
+      <div className="filters-buttons">{renderSearch()}</div>
+      <h1 className="x-large title-text">
+        <AiOutlineFileSearch className="mx-1" /> {props.title}
+      </h1>
       <div className="line"></div>
-
-      <Scroll
-        className="infinite-scroll my-4"
-        dataLength={comicCards.length}
-        next={loadComics}
-        height={props.height}
-        hasMore={true}
-      >
-        <div className="profiles">{comicCards}</div>
-      </Scroll>
-      {showNoItemsMessage()}
+      {!comicCards || comicCards.length === 0 ? (
+        <div> {showNoItemsMessage()}</div>
+      ) : (
+        <Scroll
+          className="infinite-scroll my-4"
+          dataLength={comicCards.length}
+          next={loadComics}
+          height={props.height}
+          hasMore={true}
+        >
+          <div className="profiles">{comicCards}</div>
+        </Scroll>
+      )}
     </div>
   )
 }

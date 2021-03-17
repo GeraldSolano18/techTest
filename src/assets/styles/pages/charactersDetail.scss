@@ -100,3 +100,47 @@
   width: 50px;
   font-size: 4rem;
 }
+
+
+.section_detail {
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+  padding: 5rem;
+  color: $light-color;
+}
+
+//responsive
+
+@include mediaXl {
+  .section_detail {
+ 
+  }
+}
+
+@include mediaLg {
+  .section_detail {
+
+  }
+}
+
+@include mediaMd {
+  .section_detail {
+    margin-top: 400px;
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+//SMARTFHONES
+@include mediaSm {
+  .section_detail {
+   
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 0;
+  }
+}
+

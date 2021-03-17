@@ -2,7 +2,6 @@
 .master-container {
   margin: auto;
   overflow: hidden;
-
   margin-top: 60px;
   margin-bottom: 3rem;
 }
@@ -161,6 +160,13 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.window-width{
+  width: 90%;
+  margin: auto;
+}
+
+
+
 //ANIMACIONES
 
 @keyframes animacion1 {
@@ -172,4 +178,58 @@
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+@include mediaXl {
+  .master-container {
+  }
+}
+
+@include mediaLg {
+  .master-container {
+    margin-top: 120px;
+  }
+}
+
+@include mediaMd {
+  .master-container {
+    margin-top: 120px;
+  }
+  .navbar {
+    flex-direction: column;
+  }
+  .section_detail {
+    margin-top: 200px;
+  }
+
+  .HeaderSearchform {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+}
+
+//SMARTFHONES
+@include mediaSm {
+  .master-container {
+    margin-top: 120px;
+  }
+  .navbar {
+    flex-direction: column;
+  }
+  .section_detail {
+    margin-top: 200px;
+  }
+  .HeaderSearchform {
+    column-gap: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .section_content {
+    padding: 0;
+  }
+  .search-input{
+    width: 150px;
+  }
+ 
 }

@@ -48,7 +48,7 @@ const ScrollStories = props => {
     }
   }
   return (
-    <div className="filters-buttons">
+    <div className="window-width">
       <h1 className="x-large title-text"> {props.title}</h1>
       <div className="line"></div>
       <Scroll

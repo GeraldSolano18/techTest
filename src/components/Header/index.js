@@ -30,7 +30,7 @@ const Header = () => (
           <Link to="/stories">Stories</Link>
         </li>
         <li>
-          <Link to="/favorites">Your Favorites </Link>
+          <Link to="/favorites">Favorites </Link>
         </li>
       </ul>
     </nav>

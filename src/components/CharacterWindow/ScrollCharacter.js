@@ -5,6 +5,7 @@ import { MdError } from "react-icons/md"
 import CustomCard from "../Card/CharacterCard"
 import { BsSearch } from "react-icons/bs"
 import debounce from "lodash.debounce"
+import { AiOutlineFileSearch } from "react-icons/ai"
 
 const ScrollCharacter = props => {
   const [characterCards, setCharacterCards] = useState([])
@@ -56,7 +57,7 @@ const ScrollCharacter = props => {
 
       setCharacterCards([...characterCards, ...newCards])
       setCurrentPage(currentPage + 1)
-    } 
+    }
   }
 
   const showNoItemsMessage = () => {
@@ -64,7 +65,6 @@ const ScrollCharacter = props => {
       return (
         <div className="my-5 d-flex">
           <h1 className="large">
-            
             <MdError className="mx-1" />
             No results for your search{" "}
           </h1>
@@ -77,7 +77,6 @@ const ScrollCharacter = props => {
     if (!props.useSearch) {
       return <></>
     }
-
     return (
       <div className="search-container">
         <div className="search-input">
@@ -95,9 +94,15 @@ const ScrollCharacter = props => {
   }
 
   return (
-    <div className="filters-buttons">
-      <div className="filters-buttons">{renderSearch()}</div>
-      <h1 className="x-large title-text"> {props.title}</h1>
+    <div className="window-width">
+      <div className="filters-buttons">
+        {renderSearch()}
+        </div>
+      
+      <h1 className="x-large title-text">
+        {" "}
+        <AiOutlineFileSearch className="mx-1" /> {props.title}
+      </h1>
       <div className="line"></div>
       {!characterCards || characterCards.length === 0 ? (
         <div>{showNoItemsMessage()}</div>

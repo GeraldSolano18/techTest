@@ -96,6 +96,8 @@
   color: $light-color;
 }
 
+//responsive
+
 @include mediaXl {
   .profiles {
     grid-template-columns: repeat(4, 1fr);
@@ -111,9 +113,6 @@
 @include mediaMd {
   .profiles {
     grid-template-columns: 1fr 1fr;
-    // width: calc(100% - 40px);
-    // box-sizing: border-box;
-    // padding: 20px 20px 20px 0;
   }
 }
 
